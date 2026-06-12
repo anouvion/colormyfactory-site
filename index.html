@@ -399,6 +399,22 @@
     padding-top: .75rem; margin-top: .75rem;
   }
 
+  /* ── ACTUALITÉS / LINKEDIN ───────────────────────── */
+  #actualites { background: var(--warm); }
+  .linkedin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1080px;
+  }
+  .linkedin-embed {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .linkedin-embed iframe { display: block; width: 100%; border: 0; min-height: 580px; }
+
   /* ── OFFRE ────────────────────────────────────────── */
   #offre { background: var(--warm); }
 
@@ -594,6 +610,7 @@
   <a href="#" class="nav-logo"><span>Color</span> My Factory</a>
   <ul class="nav-links">
     <li><a href="#collection">La collection</a></li>
+    <li><a href="#actualites">Actualités</a></li>
     <li><a href="#offre">Pour les villes</a></li>
     <li><a href="#apropos">Gaëlle Delahaye</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -607,6 +624,7 @@
 <!-- Mobile menu - independant du nav -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#collection" onclick="closeMenu()">La collection</a>
+  <a href="#actualites" onclick="closeMenu()">Actualités</a>
   <a href="#offre" onclick="closeMenu()">Pour les villes</a>
   <a href="#apropos" onclick="closeMenu()">Gaëlle Delahaye</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
@@ -671,6 +689,33 @@
     </div>
   </div>
 </div>
+
+<!-- ── ACTUALITÉS / LINKEDIN ── -->
+<section id="actualites">
+  <p class="section-label">Sur les réseaux</p>
+  <h2>Nos <em>dernières actualités</em></h2>
+  <p class="section-intro">
+    La vie des albums Color My Factory au fil de l'eau - sorties, coulisses et nouveaux projets,
+    à suivre sur LinkedIn.
+  </p>
+  <div class="linkedin-grid">
+    <div class="linkedin-embed">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7425202868174954496"
+              height="600" width="100%" frameborder="0" allowfullscreen loading="lazy"
+              title="Publication LinkedIn Color My Factory - second projet éditorial"></iframe>
+    </div>
+    <div class="linkedin-embed">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7272627295218020352"
+              height="600" width="100%" frameborder="0" allowfullscreen loading="lazy"
+              title="Publication LinkedIn Color My Factory - sortie d'album"></iframe>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:2.5rem;">
+    <a href="https://www.linkedin.com/in/gaelle-delahaye-92736929/" target="_blank" rel="noopener" class="btn-ghost">
+      Suivre Gaëlle sur LinkedIn ↗
+    </a>
+  </div>
+</section>
 
 <!-- ── COLLECTION ── -->
 <section id="collection">
