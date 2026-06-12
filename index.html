@@ -366,7 +366,7 @@
     overflow: hidden;
     background: var(--light);
   }
-  .book-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .book-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s; }
   .book-item:hover .book-cover img { transform: scale(1.04); }
 
   .book-body { padding: 1.5rem; }
@@ -633,19 +633,18 @@
 
   <div class="hero-visual">
     <div class="slideshow" id="heroSlideshow">
-      <!-- Slide 1 : partie haute de l'image (Doucette + Petit Bleu) -->
+      <!-- Slide 1 : les 4 albums de la collection -->
       <div class="slide active">
         <img src="images/couvertures.webp"
-             alt="Doucette le Dragon et Petit Bleu au Pays Blanc - albums Color My Factory"
-             style="object-position: 50% 0%;">
-        <p class="slide-caption">Doucette le Dragon &amp; Petit Bleu au Pays Blanc</p>
+             alt="Les quatre albums Color My Factory : Doucette le Dragon, Petit Bleu au Pays Blanc, La Grotte d'Eliott et Les Fruits de Paolo"
+             style="object-fit: contain; background: var(--warm);">
+        <p class="slide-caption">Les quatre albums de la collection</p>
       </div>
-      <!-- Slide 2 : partie basse de l'image (Eliott + Paolo) -->
+      <!-- Slide 2 : remise des albums aux enfants de Pantin -->
       <div class="slide">
-        <img src="images/couvertures.webp"
-             alt="La Grotte d'Eliott et Les Fruits de Paolo - albums Color My Factory"
-             style="object-position: 50% 100%;">
-        <p class="slide-caption">La Grotte d'Eliott &amp; Les Fruits de Paolo</p>
+        <img src="images/remise-pantin.webp"
+             alt="Remise des albums Color My Factory aux enfants des écoles maternelles de Pantin">
+        <p class="slide-caption">Remise des albums aux enfants des écoles de Pantin</p>
       </div>
       <div class="slideshow-dots">
         <button class="dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
@@ -688,9 +687,7 @@
     <!-- Doucette -->
     <div class="book-item">
       <div class="book-cover">
-        <img src="images/couvertures.webp"
-             alt="Doucette le Dragon"
-             style="object-position: 0 0; transform: scale(2) translate(25%, 25%)">
+        <img src="images/doucette.webp" alt="Couverture de Doucette le Dragon">
       </div>
       <div class="book-body">
         <div class="book-themes">
@@ -706,9 +703,7 @@
     <!-- Petit Bleu -->
     <div class="book-item">
       <div class="book-cover">
-        <img src="images/couvertures.webp"
-             alt="Petit Bleu au Pays Blanc"
-             style="object-position: 100% 0; transform: scale(2) translate(-25%, 25%)">
+        <img src="images/petit-bleu.webp" alt="Couverture de Petit Bleu au Pays Blanc">
       </div>
       <div class="book-body">
         <div class="book-themes">
@@ -724,9 +719,7 @@
     <!-- Eliott -->
     <div class="book-item">
       <div class="book-cover">
-        <img src="images/couvertures.webp"
-             alt="La Grotte d'Eliott"
-             style="object-position: 0 100%; transform: scale(2) translate(25%, -25%)">
+        <img src="images/eliott.webp" alt="Couverture de La Grotte d'Eliott">
       </div>
       <div class="book-body">
         <div class="book-themes">
@@ -742,9 +735,7 @@
     <!-- Paolo -->
     <div class="book-item">
       <div class="book-cover">
-        <img src="images/couvertures.webp"
-             alt="Les Fruits de Paolo"
-             style="object-position: 100% 100%; transform: scale(2) translate(-25%, -25%)">
+        <img src="images/paolo.webp" alt="Couverture de Les Fruits de Paolo">
       </div>
       <div class="book-body">
         <div class="book-themes">
