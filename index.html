@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color My Factory - Albums jeunesse pour les villes</title>
+<meta name="description" content="Color My Factory crée des albums illustrés pour les enfants de maternelle, pensés pour les collectivités. Offre sur-mesure pour les mairies.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Color My Factory - Albums jeunesse pour les villes">
+<meta property="og:description" content="Des albums illustrés pour les 3-6 ans, conçus pour les collectivités. Commande ou création sur-mesure aux couleurs de votre commune.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://colormyfactory.fr">
+<meta property="og:image" content="https://colormyfactory.fr/images/og-image.jpg">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Color My Factory - Albums jeunesse pour les villes">
+<meta name="twitter:description" content="Des albums illustrés pour les 3-6 ans, conçus pour les collectivités.">
+<meta name="twitter:image" content="https://colormyfactory.fr/images/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+
+<!-- Google Analytics GA4 - remplacer G-R60WEXEQBE par votre ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R60WEXEQBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R60WEXEQBE');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:    #1F2937;
+    --warm:   #FAF7F2;
+    --rose:   #E0637A;
+    --blue:   #4A90B8;
+    --green:  #6AA86A;
+    --gold:   #D4935A;
+    --muted:  #6B7280;
+    --light:  #F3EFE8;
+    --white:  #FFFFFF;
+    --shadow: 0 4px 24px rgba(31,41,55,.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,247,242,.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(31,41,55,.08);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -.01em;
+  }
+  .nav-logo span { color: var(--rose); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: .875rem; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--rose); color: var(--white);
+    font-size: .875rem; font-weight: 600;
+    padding: .55rem 1.25rem; border-radius: 2rem;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: #c94d66; transform: translateY(-1px); }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 5vw 60px;
+    gap: 4rem;
+    background: var(--warm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* watercolor blobs - signature element */
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 620px; height: 620px;
+    right: -80px; top: -80px;
+    border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
+    background: radial-gradient(ellipse at 40% 40%,
+      rgba(224,99,122,.13) 0%,
+      rgba(74,144,184,.09) 45%,
+      transparent 70%);
+    animation: blob 14s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    left: -60px; bottom: 40px;
+    border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+    background: radial-gradient(ellipse at 60% 60%,
+      rgba(106,168,106,.12) 0%,
+      rgba(212,147,90,.08) 50%,
+      transparent 70%);
+    animation: blob 18s ease-in-out infinite reverse;
+    pointer-events: none;
+  }
+  @keyframes blob {
+    0%,100% { border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%; }
+    33%      { border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%; }
+    66%      { border-radius: 70% 30% 40% 60% / 30% 70% 60% 40%; }
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: .8rem; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--rose);
+    background: rgba(224,99,122,.1);
+    padding: .3rem .9rem; border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.25rem;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--rose); color: var(--white);
+    font-size: 1rem; font-weight: 600;
+    padding: .85rem 2rem; border-radius: 3rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 18px rgba(224,99,122,.35);
+    display: inline-flex; align-items: center; gap: .5rem;
+  }
+  .btn-primary:hover { background: #c94d66; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(224,99,122,.45); }
+
+  .btn-ghost {
+    color: var(--ink); font-size: .95rem; font-weight: 500;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: .4rem;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: color .2s;
+  }
+  .btn-ghost:hover { color: var(--rose); }
+
+  /* hero visual - slideshow */
+  .hero-visual {
+    position: relative; z-index: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(31,41,55,.18);
+    aspect-ratio: 1;
+  }
+
+  .slideshow {
+    position: relative;
+    width: 100%; height: 100%;
+  }
+
+  .slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    background: var(--light);
+  }
+  .slide.active { opacity: 1; }
+  .slide img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  .slide-caption {
+    position: absolute; bottom: 3.5rem; left: 1rem; right: 1rem;
+    background: rgba(31,41,55,.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: .65rem 1rem;
+    border-radius: 10px;
+    font-size: .85rem; font-weight: 500;
+    text-align: center;
+  }
+
+  .slideshow-dots {
+    position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+    display: flex; gap: .5rem; z-index: 2;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,.5);
+    border: none; cursor: pointer; padding: 0;
+    transition: background .3s, transform .3s;
+  }
+  .dot.active { background: var(--white); transform: scale(1.3); }
+
+
+  /* Hamburger mobile */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer;
+    padding: 6px;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--ink); border-radius: 2px;
+    transition: all .3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+    background: rgba(250,247,242,.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(31,41,55,.08);
+    padding: 1.5rem 5vw 2rem;
+    flex-direction: column; gap: 1.25rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1.1rem; font-weight: 500;
+    color: var(--ink); text-decoration: none;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgba(31,41,55,.06);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ── SECTION SHARED ───────────────────────────────── */
+  section { padding: 100px 5vw; }
+  .section-label {
+    font-size: .78rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+  h2 em { font-style: italic; color: var(--rose); }
+  .section-intro {
+    font-size: 1.1rem; color: var(--muted);
+    max-width: 560px; line-height: 1.75;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── PANTIN BAND ──────────────────────────────────── */
+  .pantin-band {
+    background: var(--ink);
+    color: var(--white);
+    padding: 72px 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .pantin-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 50%, rgba(224,99,122,.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 90% 30%, rgba(74,144,184,.15) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .pantin-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 3rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .pantin-icon {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; flex-shrink: 0;
+  }
+  .pantin-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    line-height: 1.35;
+    margin-bottom: 1rem;
+  }
+  .pantin-detail {
+    font-size: .95rem; opacity: .75; line-height: 1.65;
+  }
+  .pantin-detail strong { opacity: 1; color: var(--white); }
+
+  /* ── BOOKS ────────────────────────────────────────── */
+  #collection { background: var(--light); }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .book-item {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .book-item:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(31,41,55,.15); }
+
+  .book-cover {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--light);
+  }
+  .book-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .book-item:hover .book-cover img { transform: scale(1.04); }
+
+  .book-body { padding: 1.5rem; }
+  .book-themes {
+    display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .85rem;
+  }
+  .theme-tag {
+    font-size: .72rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: .25rem .65rem; border-radius: 2rem;
+    background: var(--light); color: var(--muted);
+  }
+  .theme-tag.rose  { background: rgba(224,99,122,.12); color: var(--rose); }
+  .theme-tag.blue  { background: rgba(74,144,184,.12); color: var(--blue); }
+  .theme-tag.green { background: rgba(106,168,106,.12); color: var(--green); }
+  .theme-tag.gold  { background: rgba(212,147,90,.12); color: var(--gold); }
+
+  .book-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    margin-bottom: .6rem; line-height: 1.2;
+  }
+  .book-body p {
+    font-size: .9rem; color: var(--muted); line-height: 1.65;
+    margin-bottom: .85rem;
+  }
+  .book-meta {
+    font-size: .78rem; color: var(--muted); opacity: .75;
+    border-top: 1px solid var(--light);
+    padding-top: .75rem; margin-top: .75rem;
+  }
+
+  /* ── OFFRE ────────────────────────────────────────── */
+  #offre { background: var(--warm); }
+
+  .offre-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .offre-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    border-top: 5px solid transparent;
+    transition: transform .25s;
+  }
+  .offre-card:hover { transform: translateY(-4px); }
+  .offre-card.card-rose  { border-top-color: var(--rose); }
+  .offre-card.card-blue  { border-top-color: var(--blue); }
+
+  .offre-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+
+  .offre-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    margin-bottom: .75rem;
+  }
+  .offre-card p {
+    color: var(--muted); font-size: .95rem; line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .offre-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: .55rem;
+  }
+  .offre-list li {
+    display: flex; align-items: flex-start; gap: .6rem;
+    font-size: .9rem; color: var(--ink);
+  }
+  .offre-list li::before {
+    content: '✦'; font-size: .65rem;
+    color: var(--rose); flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  /* ── À PROPOS ─────────────────────────────────────── */
+  #apropos { background: var(--light); }
+
+  .apropos-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: center;
+  }
+  .apropos-portrait {
+    position: relative;
+  }
+
+  .apropos-text h2 { margin-bottom: .75rem; }
+  .apropos-text .section-label { margin-bottom: .5rem; }
+  .apropos-text p {
+    color: var(--muted); font-size: 1rem; line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .apropos-text p:last-of-type { margin-bottom: 1.75rem; }
+
+  .value-pills {
+    display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem;
+  }
+  .pill {
+    font-size: .82rem; font-weight: 500;
+    padding: .35rem 1rem; border-radius: 2rem;
+    background: var(--white); color: var(--ink);
+    border: 1px solid rgba(31,41,55,.1);
+  }
+
+  /* ── CONTACT ──────────────────────────────────────── */
+  #contact {
+    background: var(--ink);
+    color: var(--white);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(224,99,122,.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(74,144,184,.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(106,168,106,.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #contact .section-label { color: rgba(255,255,255,.5); }
+  #contact h2 { color: var(--white); margin-bottom: 1rem; }
+  #contact .section-intro { color: rgba(255,255,255,.65); max-width: 480px; margin: 0 auto 2.5rem; }
+
+  .contact-card {
+    display: inline-flex; flex-direction: column;
+    align-items: center; gap: 2rem;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 24px;
+    padding: 3rem 4rem;
+    backdrop-filter: blur(12px);
+    position: relative; z-index: 1;
+    margin-bottom: 2rem;
+  }
+
+  .contact-email {
+    color: rgba(255,255,255,.75);
+    font-size: 1rem;
+  }
+  .contact-email a {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .btn-primary-light {
+    background: var(--white); color: var(--ink);
+    font-size: 1rem; font-weight: 600;
+    padding: .9rem 2.25rem; border-radius: 3rem;
+    text-decoration: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    display: inline-flex; align-items: center; gap: .5rem;
+  }
+  .btn-primary-light:hover { background: var(--warm); transform: translateY(-2px); }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    background: #111827;
+    color: rgba(255,255,255,.4);
+    padding: 2.5rem 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .85rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+  footer a:hover { color: var(--white); }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,.7);
+  }
+  .footer-logo span { color: var(--rose); }
+
+  /* ── FLOATING CTA ─────────────────────────────────── */
+  .float-cta {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    background: var(--rose);
+    color: var(--white);
+    font-size: .9rem; font-weight: 600;
+    padding: .8rem 1.6rem; border-radius: 3rem;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(224,99,122,.5);
+    transition: transform .2s, box-shadow .2s;
+    display: flex; align-items: center; gap: .45rem;
+  }
+  .float-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(224,99,122,.55); }
+
+  /* ── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 90px; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero-sub { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { max-width: 380px; margin: 0 auto; }
+    nav .nav-links, nav .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .offre-grid { grid-template-columns: 1fr; }
+    .apropos-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .pantin-inner { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+    .pantin-icon { margin: 0 auto; }
+    .contact-card { padding: 2rem 1.75rem; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 70px 5vw; }
+    .books-grid { grid-template-columns: 1fr; }
+    .float-cta span { display: none; }
+    .float-cta { padding: .9rem 1.1rem; border-radius: 50%; font-size: 1.3rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide { transition: none !important; }
+    .hero::before, .hero::after, .portrait-blob { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo"><span>Color</span> My Factory</a>
+  <ul class="nav-links">
+    <li><a href="#collection">La collection</a></li>
+    <li><a href="#offre">Pour les villes</a></li>
+    <li><a href="#apropos">Gaëlle Delahaye</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:gdelahaye@colormyfactory.com?subject=Demande de rendez-vous" class="nav-cta">Prendre RDV</a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu - independant du nav -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#collection" onclick="closeMenu()">La collection</a>
+  <a href="#offre" onclick="closeMenu()">Pour les villes</a>
+  <a href="#apropos" onclick="closeMenu()">Gaëlle Delahaye</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="mailto:gdelahaye@colormyfactory.com?subject=Demande de rendez-vous" style="color:var(--rose);font-weight:600">Prendre RDV</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="accueil">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Albums jeunesse · Maternelle · Sur-mesure</span>
+    <h1>Des livres qui <em>donnent envie</em> d'être différent</h1>
+    <p class="hero-sub">
+      Color My Factory crée des albums illustrés pour les enfants de maternelle, conçus
+      pour les collectivités qui souhaitent offrir à leurs écoles des ressources culturelles
+      de qualité - sur thème libre, aux couleurs de leur commune.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:gdelahaye@colormyfactory.com?subject=Demande de rendez-vous" class="btn-primary">
+        📅 Prendre RDV avec Gaëlle
+      </a>
+      <a href="#collection" class="btn-ghost">Découvrir la collection ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="slideshow" id="heroSlideshow">
+      <!-- Slide 1 : partie haute de l'image (Doucette + Petit Bleu) -->
+      <div class="slide active">
+        <img src="images/couvertures.webp"
+             alt="Doucette le Dragon et Petit Bleu au Pays Blanc - albums Color My Factory"
+             style="object-position: 50% 0%;">
+        <p class="slide-caption">Doucette le Dragon &amp; Petit Bleu au Pays Blanc</p>
+      </div>
+      <!-- Slide 2 : partie basse de l'image (Eliott + Paolo) -->
+      <div class="slide">
+        <img src="images/couvertures.webp"
+             alt="La Grotte d'Eliott et Les Fruits de Paolo - albums Color My Factory"
+             style="object-position: 50% 100%;">
+        <p class="slide-caption">La Grotte d'Eliott &amp; Les Fruits de Paolo</p>
+      </div>
+      <div class="slideshow-dots">
+        <button class="dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+        <button class="dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PANTIN BAND ── -->
+<div class="pantin-band">
+  <div class="pantin-inner">
+    <div class="pantin-icon">🏛️</div>
+    <div>
+      <p class="pantin-quote">
+        "Depuis 2024, tous les enfants des écoles maternelles de Pantin reçoivent
+        chaque Noël un album Color My Factory - remis personnellement par le maire."
+      </p>
+      <p class="pantin-detail">
+        <strong>Ville de Pantin (Seine-Saint-Denis)</strong> - référence terrain depuis 2024.
+        Un cadeau culturel durable, pensé pour les familles, porté par la commune.
+        La preuve qu'un livre illustré peut devenir un vrai geste politique pour l'éducation.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── COLLECTION ── -->
+<section id="collection">
+  <p class="section-label">Notre catalogue</p>
+  <h2>Quatre histoires, <em>une même ambition</em></h2>
+  <p class="section-intro">
+    Des albums pour les 3–6 ans qui parlent de différence, d'amitié et de confiance en soi.
+    Sans morale ni discours - juste des histoires où les enfants se reconnaissent.
+    Chaque livre est accompagné d'un guide pédagogique pour les enseignants.
+  </p>
+
+  <div class="books-grid">
+
+    <!-- Doucette -->
+    <div class="book-item">
+      <div class="book-cover">
+        <img src="images/couvertures.webp"
+             alt="Doucette le Dragon"
+             style="object-position: 0 0; transform: scale(2) translate(25%, 25%)">
+      </div>
+      <div class="book-body">
+        <div class="book-themes">
+          <span class="theme-tag rose">Confiance en soi</span>
+          <span class="theme-tag">Singularité</span>
+        </div>
+        <h3>Doucette le Dragon</h3>
+        <p>Doucette est un dragon à poils - pas d'écailles comme les autres. Moquée, elle confie sa peine à sa maman, qui lui apprend une chanson magique pour se protéger des moqueries. Une histoire tendre sur l'acceptation de soi.</p>
+        <p class="book-meta">32 pages · 25×25 cm · Couverture souple · Sortie déc. 2024<br>Autrice/illustratrice : Claire Courdavault</p>
+      </div>
+    </div>
+
+    <!-- Petit Bleu -->
+    <div class="book-item">
+      <div class="book-cover">
+        <img src="images/couvertures.webp"
+             alt="Petit Bleu au Pays Blanc"
+             style="object-position: 100% 0; transform: scale(2) translate(-25%, 25%)">
+      </div>
+      <div class="book-body">
+        <div class="book-themes">
+          <span class="theme-tag blue">Différence</span>
+          <span class="theme-tag">Pluralité</span>
+        </div>
+        <h3>Petit Bleu au Pays Blanc</h3>
+        <p>Au pays blanc naît un petit bleu. Caché puis déguisé, son secret éclate au grand jour en pleine cour. Il découvre alors que ses amis l'acceptent tel qu'il est, et qu'il est loin d'être le seul différent.</p>
+        <p class="book-meta">32 pages · 25×19 cm · Couverture souple · Sortie déc. 2025<br>Autrice/illustratrice : Gaëlle Delahaye</p>
+      </div>
+    </div>
+
+    <!-- Eliott -->
+    <div class="book-item">
+      <div class="book-cover">
+        <img src="images/couvertures.webp"
+             alt="La Grotte d'Eliott"
+             style="object-position: 0 100%; transform: scale(2) translate(25%, -25%)">
+      </div>
+      <div class="book-body">
+        <div class="book-themes">
+          <span class="theme-tag green">Amitié</span>
+          <span class="theme-tag">Créativité</span>
+        </div>
+        <h3>La Grotte d'Eliott</h3>
+        <p>Eliott aime le silence et les objets cassés, dont il fabrique des statues fantastiques en secret. Quand Zoé le suit, elle découvre un monde incroyable. Une rencontre touchante qui célèbre l'imagination et l'amitié.</p>
+        <p class="book-meta">32 pages · 25×25 cm · Couverture cartonnée · Sortie déc. 2025<br>Autrice/illustratrice : Gaëlle Delahaye</p>
+      </div>
+    </div>
+
+    <!-- Paolo -->
+    <div class="book-item">
+      <div class="book-cover">
+        <img src="images/couvertures.webp"
+             alt="Les Fruits de Paolo"
+             style="object-position: 100% 100%; transform: scale(2) translate(-25%, -25%)">
+      </div>
+      <div class="book-body">
+        <div class="book-themes">
+          <span class="theme-tag gold">Regard des autres</span>
+          <span class="theme-tag">Talents</span>
+        </div>
+        <h3>Les Fruits de Paolo</h3>
+        <p>Dans la jungle, Paolo préfère récolter des trésors inutiles plutôt que des fruits. Moqué et exclu, il s'éloigne - jusqu'au jour où sa fantaisie devient une force pour toute la communauté. Une histoire tendre et colorée.</p>
+        <p class="book-meta">32 pages · 25×19 cm · Couverture souple · Sortie déc. 2025<br>Autrice/illustratrice : Gaëlle Delahaye</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── OFFRE ── -->
+<section id="offre">
+  <p class="section-label">Pour les collectivités</p>
+  <h2>Un projet culturel <em>à votre image</em></h2>
+  <p class="section-intro">
+    Nous travaillons directement avec les mairies, les adjoints à l'éducation et les services culturels
+    pour construire une offre adaptée à votre commune - de la commande simple à la création sur-mesure.
+  </p>
+
+  <div class="offre-grid">
+
+    <div class="offre-card card-blue">
+      <div class="offre-icon">📦</div>
+      <h3>Commande des livres existants</h3>
+      <p>
+        Nos quatre albums sont disponibles à la commande pour les collectivités, avec des tarifs dégressifs
+        selon les quantités. Chaque livre peut être accompagné d'un guide pédagogique
+        destiné aux enseignants de maternelle.
+      </p>
+      <ul class="offre-list">
+        <li>Tarifs dégressifs selon volumes</li>
+        <li>Guide pédagogique enseignants inclus</li>
+        <li>Livraison en une fois ou par école</li>
+        <li>Facturation collectivité possible</li>
+      </ul>
+    </div>
+
+    <div class="offre-card card-rose">
+      <div class="offre-icon">✏️</div>
+      <h3>Création sur-mesure</h3>
+      <p>
+        Nous créons un album unique ancré dans l'identité de votre commune - thème libre, personnages
+        proches des élèves, décors familiers. Un ouvrage durable, aux couleurs de votre territoire,
+        avec votre logo en couverture.
+      </p>
+      <ul class="offre-list">
+        <li>Thème choisi avec vous (mobilité douce, environnement, patrimoine…)</li>
+        <li>Univers graphique adapté à votre identité</li>
+        <li>Personnages et décors locaux modulables</li>
+        <li>Votre logo intégré à l'ouvrage</li>
+        <li>Guide pédagogique sur-mesure</li>
+        <li>Ateliers en classe animés par Gaëlle</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 3rem;">
+    <a href="mailto:gdelahaye@colormyfactory.com?subject=Demande de rendez-vous collectivité" class="btn-primary" style="font-size:1.05rem; padding:1rem 2.5rem;">
+      📅 Discutons de votre projet
+    </a>
+  </div>
+</section>
+
+<!-- ── À PROPOS ── -->
+<section id="apropos">
+  <div class="apropos-inner">
+    <div class="apropos-portrait">
+      <img src="images/gaelle.webp"
+           alt="Gaëlle Delahaye, illustratrice et fondatrice de Color My Factory"
+           style="width:100%; aspect-ratio:1; object-fit:cover; object-position:center top;
+                  border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+                  box-shadow: 0 12px 40px rgba(31,41,55,.15);">
+    </div>
+    <div class="apropos-text">
+      <p class="section-label">L'autrice</p>
+      <h2>Gaëlle Delahaye, <em>illustratrice et éditrice</em></h2>
+      <p>
+        Color My Factory est une maison d'édition jeunesse indépendante fondée et portée
+        par Gaëlle Delahaye depuis 2013, implantée à Paris. Illustratrice et chef d'entreprise,
+        Gaëlle crée des livres pédagogiques sur-mesure qui transmettent les valeurs fortes
+        de notre société à travers des histoires éducatives et sociales.
+      </p>
+      <p>
+        Elle accorde une attention particulière à ses collaborations - illustrateurs, graphistes,
+        imprimeurs - guidée par un fort respect humain et environnemental. La taille humaine
+        de la structure permet un accompagnement adapté, une écoute particulière et une grande
+        flexibilité dans chaque projet.
+      </p>
+      <p>
+        Au-delà des livres, Gaëlle propose un accompagnement pédagogique complet :
+        guides de lecture pour les enseignants, ateliers interactifs directement en classe.
+      </p>
+      <div class="value-pills">
+        <span class="pill">Édition indépendante</span>
+        <span class="pill">Projets pédagogiques</span>
+        <span class="pill">Sur-mesure</span>
+        <span class="pill">Paris · depuis 2013</span>
+        <span class="pill">Ateliers en classe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <p class="section-label" style="position:relative;z-index:1">Prenons contact</p>
+  <h2 style="position:relative;z-index:1">Une visio de 30 minutes<br><em>pour tout vous présenter</em></h2>
+  <p class="section-intro" style="position:relative;z-index:1">
+    Gaëlle vous présente la collection, répond à vos questions et explore avec vous
+    les possibilités pour votre commune - sans engagement.
+  </p>
+  <div class="contact-card">
+    <a href="mailto:gdelahaye@colormyfactory.com?subject=Demande de rendez-vous" class="btn-primary-light">
+      📅 Proposer un créneau à Gaëlle
+    </a>
+    <p class="contact-email">
+      Ou écrire directement :
+      <a href="mailto:gdelahaye@colormyfactory.com">gdelahaye@colormyfactory.com</a>
+      &nbsp;·&nbsp; 06 98 80 79 71
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-logo"><span>Color</span> My Factory - Éditions jeunesse</span>
+  <span>© 2025 Color My Factory · Gaëlle Delahaye · Paris</span>
+  <a href="http://colormyfactory.com" target="_blank" rel="noopener">colormyfactory.com ↗</a>
+</footer>
+
+<!-- ── FLOATING CTA ── -->
+<a href="mailto:gdelahaye@colormyfactory.com?subject=Demande de rendez-vous" class="float-cta">
+  📅 <span>Prendre RDV</span>
+</a>
+
+<script>
+  // ── Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    if (!menu.contains(e.target) && !e.target.closest('.nav-hamburger')) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // ── Hero slideshow (2 slides, 5s interval, CSS fade)
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  setInterval(() => {
+    goToSlide((currentSlide + 1) % slides.length);
+  }, 5000);
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.book-item, .offre-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity .55s ease, transform .55s ease';
+    observer.observe(el);
+  });
+
+  // Hide float CTA when contact section visible
+  const contactSection = document.getElementById('contact');
+  const floatCta = document.querySelector('.float-cta');
+  const ctaObserver = new IntersectionObserver(entries => {
+    floatCta.style.opacity = entries[0].isIntersecting ? '0' : '1';
+    floatCta.style.pointerEvents = entries[0].isIntersecting ? 'none' : 'auto';
+  });
+  ctaObserver.observe(contactSection);
+</script>
+</body>
+</html>
