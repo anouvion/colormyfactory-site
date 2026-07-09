@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://colormyfactory-villes.netlify.app/sitemap.xml
